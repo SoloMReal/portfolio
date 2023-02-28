@@ -1,0 +1,666 @@
+<head>
+     
+  <title>Solo - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	  <link rel="apple-touch-icon" sizes="180x180" href="/static/images/profile_picture.png">
+	  <link rel="icon" type="image/png" sizes="32x32" href="/static/images/profile_picture.png">
+	  <link rel="icon" type="image/png" sizes="16x16" href="/static/images/profile_picture.png">
+	  
+	  <link rel="mask-icon" href="/static/images/profile_picture.png" color="#5bbad5">
+	  <meta name="msapplication-TileColor" content="#da532c">
+	  <meta name="theme-color" content="#ffffff">
+
+
+</head>
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+
+
+@font-face {
+		font-family: 'BAHNSCHRIFT';
+		src: URL('/static/fonts/BAHNSCHRIFT.TTF') format('truetype');
+	}
+	
+	@font-face {
+		font-family: 'CLESMONT';
+		src: URL('/static/fonts/Clesmont.otf') format('truetype');
+	}
+
+
+
+
+:root {
+  --duration: 40s;
+}
+
+
+body {
+  background: #131520;
+  overflow: hidden;
+}
+
+.wrapper-images {
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  opacity: 0.8;
+  transform: translate3d(-50%, -50%, 0) perspective(800px) rotatey(10deg) rotateX(-10deg);
+  filter: blur(5px);
+}
+
+.images-line {
+  -webkit-animation: runner var(--duration) linear infinite;
+          animation: runner var(--duration) linear infinite;
+  display: flex;
+  transform: translateX(23%);
+}
+.images-line:nth-child(even) {
+  -webkit-animation-duration: calc(var(--duration) * 1.5);
+          animation-duration: calc(var(--duration) * 1.5);
+}
+.images-line .line {
+  background-position: 50% 50%;
+  background-size: cover;
+  flex: none;
+  height: 24vh;
+  margin: clamp(10px, 2vw, 20px);
+  width: 40vh;
+  position: relative;
+  transition: ease-in-out all 0.3s;
+  border-radius: 1rem;
+}
+.images-line .line .img {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: ease-in-out all 0.3s;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.images-line .line:hover .img {
+  cursor: pointer;
+  transform: scale(1.1) translatez(0px);
+}
+.images-line .line:hover:after {
+  filter: blur(35px) opacity(0.8);
+}
+.images-line .line:after {
+  content: "";
+  background: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 3vh;
+  position: absolute;
+  background-size: cover;
+  z-index: -1;
+  transition: ease-in-out all 0.3s;
+  filter: blur(25px) opacity(0.8);
+}
+
+@-webkit-keyframes runner {
+  to {
+    transform: translateX(-10.4%);
+  }
+}
+
+@keyframes runner {
+  to {
+    transform: translateX(-10.4%);
+  }
+}
+
+.main_title {
+	font-family: 'CLESMONT';
+  font-size: 50px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-shadow: 0 0 10px #000;
+  padding-bottom: 5px;
+}
+.main_title span {
+  color: #005274;
+  font-size: 50px;
+  font-weight: 900;
+  text-shadow: 0 0 10px #005274;
+}
+.sub_title {
+	font-family: 'CLESMONT';
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-shadow: 0 0 10px #000;
+}
+.btn_container {
+	  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.btn {
+	  background: #333333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 10px;
+  font-family: 'CLESMONT';
+  font-size: 20px;
+  font-weight: 500;
+  box-shadow: 0 0 2px #d2d2d2;
+  transition: ease-in-out all 0.3s;
+  cursor: pointer;
+}
+
+
+
+
+/* popup for contract with twitter and discord options, NO EMAIL */
+.popup_contact {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+
+	animation: popup_grow 0.5s ease-in-out;
+
+}
+
+@keyframes popup_grow {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+
+.popup_contact_content {
+	background: #333333;
+	width: 400px;
+	height: 300px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.popup_contact_title {
+	font-family: 'CLESMONT';
+	font-size: 30px;
+	font-weight: 800;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 0 10px #000;
+}
+
+.popup_contact_text {
+	font-family: 'CLESMONT';
+	font-size: 16px;
+	font-weight: 500;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 0 10px #000;
+	margin: 20px 0;
+}
+
+.popup_btns_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.popup_contact_twitter {
+	background: #005274;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin: 0 10px;
+	font-family: 'CLESMONT';
+	font-size: 20px;
+	font-weight: 500;
+	text-shadow: 0 0 10px #005274;
+	transition: ease-in-out all 0.3s;
+}
+
+.popup_contact_discord {
+	background: #005274;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin: 0 10px;
+	font-family: 'CLESMONT';
+	font-size: 20px;
+	font-weight: 500;
+	text-shadow: 0 0 10px #005274;
+	transition: ease-in-out all 0.3s;
+}
+.popup_close {
+	position: relative;
+	margin-top: -100px;
+	margin-left: 350px;
+	font-size: 40px;
+	cursor: pointer;
+	color: #fff;
+	transition: ease-in-out all 0.3s;
+}
+
+
+.popup_close ion-icon:hover {
+	color: #005274;
+	animation: spin_popup_close 0.5s ease-in-out;
+}
+
+@keyframes spin_popup_close {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(180deg);
+	}
+}
+
+.portfolio_projects {
+	width: 100%;
+	height: 100%;
+	background: #f7f7f7;
+	display: none;
+}
+
+
+/* portfolio projects */
+
+.project {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+.titles {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 150px;
+	margin-left: 5%;
+}
+.project .title {
+	font-family: 'CLESMONT';
+	font-size: 50px;
+	font-weight: 800;
+	color: #333333;
+	/* underline with #333333 */	
+	border-bottom: 2px solid #333333;
+	/* chnage width of underline */
+	width: 70%;
+	animation: slide_in 0.5s ease-in-out;
+}
+.project .sub_title2 {
+	font-family: 'CLESMONT';
+	font-size: 20px;
+	font-weight: 800;
+	color: #333333;
+	padding-top: 25px;
+	animation: slide_in 1s ease-in-out;
+}
+.project.pictures {
+	display: flex;
+	/* underneat the title */
+	
+	
+}
+.picture_image{
+	/* smaller image */	
+	width: 700px;
+	height: 400px;
+	bottom: 20px;
+	right: 20px;
+	border-radius: 10px;
+	position: absolute;
+	animation: slide_in 1.5s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.picture_image:hover {
+	scale: 1.02;
+	cursor: pointer;
+}
+.exit_button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 40px;
+	cursor: pointer;
+	color: #333333;
+	transition: ease-in-out all 0.3s;
+}
+.exit_button ion-icon:hover {
+	color: #005274;
+	animation: spin_exit_button 0.5s ease-in-out;
+}
+.arrow_button {
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	font-size: 40px;
+	cursor: pointer;
+	color: #333333;
+	animation: opacity_change 2s ease-in-out infinite;
+	transition: all 0.3s ease-in-out;	
+
+}
+.arrow_button ion-icon:hover {
+	color: #005274;
+	
+}
+
+@keyframes spin_exit_button {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes slide_in {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+
+@keyframes opacity_change {
+	0% {
+		opacity: 0.8;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+/* if mobile set main_title bottom padding to 30px */
+@media screen and (max-width: 995px) {
+  .main_title {
+	padding-bottom: 30px;
+  }
+}
+
+
+
+</style>
+
+
+<div class="front_page">
+<p class="main_title">Hello, I am <span class="styles">Solo</span></p>
+<p class="sub_title">Front & Back-end Developer that brings your ideas to life</p>
+<div class="btn_container">
+<div class="btn" id="projects_btn">Projects</div>
+<div class="btn" id="contact_btn">Contact</div>
+</div>
+<div class="wrapper-images">
+	<!-- 5 images by row -->
+	
+</div>
+
+<!-- popup for contract with twitter and discord options, NO EMAIL -->
+<div class="popup_contact">
+	<div class="popup_contact_content">
+		<div class="popup_close">
+			<!-- close svg-->
+			<ion-icon name="close-outline"></ion-icon>
+		</div>
+		<div class="popup_contact_title">Contact</div>
+		<div class="popup_contact_text">You can contact me on Twitter or Discord</div>
+		<div class="popup_btns_container">
+		<div class="popup_contact_twitter">Twitter</div>
+		<div class="popup_contact_discord">Discord</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="portfolio_projects">
+	<div class="exit_button">
+		<ion-icon name="close-outline"></ion-icon>
+	</div>
+	<div class="arrow_button" onclick="goto_project(2)">
+		<ion-icon name="arrow-forward-outline"></ion-icon>
+	</div>
+	<div class="project">
+		<div class="titles">
+		<p class="title">The ZilVerse</p>
+		<p class="sub_title2">The Zilverse is an immersive gallery which you could display and explore NFTs right in your browser!</p>
+		</div>
+
+		<div class="pictures">
+			<img class="picture_image" src="/static/images/projects/zilverse.png" onclick="linkto('https://www.zilverse.xyz')">
+		</div>
+	</div>
+
+	
+	
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+
+
+
+
+// load wrapper_images.html in wrapper-images
+$( ".wrapper-images" ).load("/wrapper_images");
+
+
+function popup_contact() {
+	$(".popup_contact").css("display", "flex");
+
+
+}
+
+$("#contact_btn").click(function() {
+	popup_contact();
+});
+
+$(".popup_close").click(function() {
+	// fade out popup using jquery
+	$(".popup_contact").fadeOut(1000);
+	// set display to none	
+	setTimeout(function() {
+		$(".popup_contact").css("display", "none");
+	}, 1000);
+});
+
+
+
+/* contact_btn on click */
+$("#projects_btn").click(function() {
+	// flip page to projects
+	gotopage(2)
+	
+});
+
+$(".exit_button").click(function() {
+	// flip page to projects
+	gotopage(1)
+	
+});
+
+/*  projects page */
+projects = [{number: 1, name: "The ZilVerse", sub_title: "The Zilverse is an immersive gallery which you could display and explore NFTs right in your browser!", image: "/static/images/projects/zilverse.png", link: "https://www.zilverse.xyz"},
+{number: 2, name: "Dope Crew", sub_title: "999 hand drawn NFT PFP with 9 different types of animals, each animal selected by the Community. Powered by Zilliqa Community!", image: "/static/images/projects/dopecrew.png", link: "https://www.dopecrew.xyz/"},
+{number: 3, name: "Roomz", sub_title: "Roomz is the first 3D customizable NFT collection on Zilliqa!", image: "/static/images/projects/roomz.png", link: "https://www.zil-roomz.xyz/"},
+
+]
+function goto_project(number) {
+	// hide all projects
+	for (var i = 0; i < projects.length; i++) {
+		// fade out page using jquery
+		$(".project").fadeOut(1000);
+		// set arrow button to next project
+		$(".arrow_button").attr("onclick", "goto_project(" + (number + 1) + ")");
+
+
+
+	}
+	// show page with number
+	for (var i = 0; i < projects.length; i++) {
+		if (projects[i].number == number) {
+			// if its the last number set the arrow button to the first project and set the icon to arrow-back-outline
+
+			// fade in page using jquery
+			$(".project").fadeIn(1000);
+			var name = projects[i].name;
+			var sub_title = projects[i].sub_title;
+			var image = projects[i].image;
+			var link = projects[i].link;
+
+			setTimeout(function() {
+			if (number == projects.length) {
+				$(".arrow_button").attr("onclick", "goto_project(1)");
+				$(".arrow_button").html('<ion-icon name="arrow-back-outline"></ion-icon>');
+			}
+			// if its the first number set the arrow button to the last project and set the icon to arrow-forward-outline
+			else if (number == 1) {
+				$(".arrow_button").html('<ion-icon name="arrow-forward-outline"></ion-icon>');
+			}
+
+			$(".title").text(name);
+			// set sub_title
+			$(".sub_title2").text(sub_title);
+			// set image
+			$(".picture_image").attr("src", image);
+			// set link
+			$(".picture_image").attr("onclick", "linkto('" + link + "')");
+			}, 1000);
+			
+		}
+	}
+
+}
+
+
+
+var pages = [{number: 1, name: "Home", div: "front_page", url: "/"}, {number:2, name: "Projects", div: "portfolio_projects", url: "/projects"}]
+function gotopage(number) {
+	// hide all pages
+	for (var i = 0; i < pages.length; i++) {
+		// fade out page using jquery
+		$("." + pages[i].div).fadeOut(1000);
+		setTimeout(function() {
+			try {
+				$("." + pages[i].div).css("display", "none");
+			} catch (error) {
+				console.log(error);
+			}
+
+		}, 1000);
+	}
+	// show page with number
+	for (var i = 0; i < pages.length; i++) {
+		if (pages[i].number == number) {
+			// fade in page using jquery
+			$("." + pages[i].div).fadeIn(1000);
+			setTimeout(function() {
+				try {
+					$("." + pages[i].div).css("display", "flex");
+				
+				} catch (error) {
+					console.log(error);
+				}
+			}, 1000);
+			// change url
+			document.title = "Solo - " + pages[i].name;
+			window.history.pushState(pages[i].name, pages[i].name, pages[i].url);
+			
+		}
+	}
+}
+function gotopage_instant(number) {
+	// hide all pages
+	for (var i = 0; i < pages.length; i++) {
+		// fade out page using jquery
+		$("." + pages[i].div).css("display", "none");
+	}
+	// show page with number
+	for (var i = 0; i < pages.length; i++) {
+		if (pages[i].number == number) {
+			// fade in page using jquery
+			$("." + pages[i].div).css("display", "flex");
+			// change url
+			window.history.pushState(pages[i].name, pages[i].name, pages[i].url);
+			/* title to page name */
+			document.title = "Solo - " + pages[i].name;
+
+		}
+	}
+}
+
+function linkto(url) {
+	window.open(url, '_blank');
+}
+
+
+// on load check url
+$(document).ready(function() {
+	var url = window.location.pathname;
+	if (url == "/") {
+	} else if (url == "/projects") {
+		gotopage_instant(2);
+	}
+});
+
+
+</script>
